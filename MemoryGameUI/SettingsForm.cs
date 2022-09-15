@@ -50,7 +50,7 @@ namespace MemoryGameUI
             this.labelSecondPlayerName.Location = new System.Drawing.Point(20, 50);
             this.labelSecondPlayerName.Name = "labelSecondPlayerName";
             this.labelSecondPlayerName.Size = new System.Drawing.Size(161, 20);
-            this.labelSecondPlayerName.TabIndex = 0;
+            this.labelSecondPlayerName.TabIndex = 2;
             this.labelSecondPlayerName.Text = "Second Player Name:";
             // 
             // textBoxFirstPlayerName
@@ -66,7 +66,7 @@ namespace MemoryGameUI
             this.textBoxSecondPlayerName.Location = new System.Drawing.Point(140, 44);
             this.textBoxSecondPlayerName.Name = "textBoxSecondPlayerName";
             this.textBoxSecondPlayerName.Size = new System.Drawing.Size(100, 26);
-            this.textBoxSecondPlayerName.TabIndex = 1;
+            this.textBoxSecondPlayerName.TabIndex = 3;
             this.textBoxSecondPlayerName.Text = "- computer -";
             // 
             // buttonChooseOpponent
@@ -76,7 +76,7 @@ namespace MemoryGameUI
             this.buttonChooseOpponent.Location = new System.Drawing.Point(247, 42);
             this.buttonChooseOpponent.Name = "buttonChooseOpponent";
             this.buttonChooseOpponent.Size = new System.Drawing.Size(100, 26);
-            this.buttonChooseOpponent.TabIndex = 2;
+            this.buttonChooseOpponent.TabIndex = 4;
             this.buttonChooseOpponent.Text = "Against A Friend";
             this.buttonChooseOpponent.UseVisualStyleBackColor = false;
             this.buttonChooseOpponent.Click += new System.EventHandler(this.buttonChooseOpponent_Click);
@@ -87,7 +87,7 @@ namespace MemoryGameUI
             this.labelBoardSize.Location = new System.Drawing.Point(20, 80);
             this.labelBoardSize.Name = "labelBoardSize";
             this.labelBoardSize.Size = new System.Drawing.Size(91, 20);
-            this.labelBoardSize.TabIndex = 0;
+            this.labelBoardSize.TabIndex = 5;
             this.labelBoardSize.Text = "Board Size:";
             // 
             // buttonBoardSize
@@ -97,7 +97,7 @@ namespace MemoryGameUI
             this.buttonBoardSize.Location = new System.Drawing.Point(20, 100);
             this.buttonBoardSize.Name = "buttonBoardSize";
             this.buttonBoardSize.Size = new System.Drawing.Size(125, 100);
-            this.buttonBoardSize.TabIndex = 3;
+            this.buttonBoardSize.TabIndex = 6;
             this.buttonBoardSize.Text = "4 x 4";
             this.buttonBoardSize.UseVisualStyleBackColor = false;
             this.buttonBoardSize.Click += new System.EventHandler(this.buttonBoardSize_Click);
@@ -109,7 +109,7 @@ namespace MemoryGameUI
             this.buttonStart.Location = new System.Drawing.Point(265, 166);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(85, 35);
-            this.buttonStart.TabIndex = 2;
+            this.buttonStart.TabIndex = 7;
             this.buttonStart.Text = "Start!";
             this.buttonStart.UseVisualStyleBackColor = false;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
@@ -162,6 +162,7 @@ namespace MemoryGameUI
             {
                 this.textBoxSecondPlayerName.Text = string.Empty;
             }
+
             this.textBoxSecondPlayerName.Enabled = !this.textBoxSecondPlayerName.Enabled;
         }
 
@@ -189,14 +190,20 @@ namespace MemoryGameUI
             }
             else
             {
+                string firstPlayerName = this.textBoxFirstPlayerName.Text;
+                string secondPlayerName = "PC";
+                bool singlePlayerMode = true;
+                char numberOfRowsAsChar = sr_BoardSizesCollection[s_BoardSizeIndex][0];
+                char numberOfColumnsAsChar = sr_BoardSizesCollection[s_BoardSizeIndex][4];
+                byte numberOfRows = byte.Parse(numberOfRowsAsChar.ToString());
+                byte numberOfColumns = byte.Parse(numberOfColumnsAsChar.ToString());
                 if (this.textBoxSecondPlayerName.Enabled)
                 {
-                    UIUtils.InitializeNames(this.textBoxFirstPlayerName.Text, this.textBoxSecondPlayerName.Text, false);
+                    secondPlayerName = this.textBoxSecondPlayerName.Text;
+                    singlePlayerMode = false;
                 }
-                else
-                {
-                    UIUtils.InitializeNames(this.textBoxFirstPlayerName.Text);
-                }
+
+                GameUtils.InitializePlayersAndBoardFromSettings(firstPlayerName, secondPlayerName, singlePlayerMode, numberOfRows, numberOfColumns);
                 this.Close();
             }
         }

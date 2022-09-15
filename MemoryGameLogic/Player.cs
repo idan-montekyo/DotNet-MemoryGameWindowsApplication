@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ex02
+namespace MemoryGameLogic
 {
     public struct Player
     {
@@ -15,22 +15,13 @@ namespace Ex02
 
         public string Name
         {
-            get
-            {
-                return this.m_Name;
-            }
+            get { return this.m_Name; }
         }
 
         public byte Score
         {
-            get
-            {
-                return this.m_Score;
-            }
-            set
-            {
-                this.m_Score = value;
-            }
+            get { return this.m_Score; }
+            set { this.m_Score = value; }
         }
     }
 }

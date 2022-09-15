@@ -51,7 +51,7 @@
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIUtils.cs" />
+    <Compile Include="GameUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -69,6 +69,12 @@
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MemoryGameLogic\MemoryGameLogic.csproj">
+      <Project>{7240d552-b5ca-4625-97c2-43eba56e1ce1}</Project>
+      <Name>MemoryGameLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

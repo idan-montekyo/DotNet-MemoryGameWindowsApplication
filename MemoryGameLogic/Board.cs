@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Ex02
+namespace MemoryGameLogic
 {
     public class Board
     {
@@ -26,10 +26,7 @@ namespace Ex02
 
         public Slot[,] Matrix
         {
-            get
-            {
-                return r_SlotsMatrix;
-            }
+            get { return r_SlotsMatrix; }
         }
 
         public bool IsBoardFullyUnveiled

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ex02
+namespace MemoryGameLogic
 {
     public class Pc
     {
@@ -18,22 +18,13 @@ namespace Ex02
 
         public string Name
         {
-            get
-            {
-                return "PC";
-            }
+            get { return "PC"; }
         }
 
         public byte Score
         {
-            get
-            {
-                return this.m_Score;
-            }
-            set
-            {
-                this.m_Score = value;
-            }
+            get { return this.m_Score; }
+            set { this.m_Score = value; }
         }
 
         public byte[] GetRandomHiddenRowAndColumn(Board i_Board)
